@@ -1,0 +1,13 @@
+# Nginx config file to serve a Flask app using uwsgi 
+
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name mywebsite.home;
+
+    location / {
+        include uwsgi_params;
+        uwsgi_pass unix:/var/www/html/automation-server/automation-server.sock;
+    }
+}

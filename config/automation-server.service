@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve automation-server
+After=network.target
+
+[Service]
+User=pi
+Group=www-data
+WorkingDirectory=/var/www/html/automation-server
+Environment="PATH=/var/www/html/automation-server/automation-server-env/bin"
+ExecStart=/var/www/html/automation-server/automation-server-env/bin/uwsgi --ini automation-server.ini
+
+[Install]
+WantedBy=multi-user.target
